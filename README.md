@@ -1,3 +1,3 @@
 # 2143-OOP-stevens
-# Jered Stevens
-### J.stevens8185@gmail.com
+__Jered Stevens__
+J.stevens8185@gmail.com
