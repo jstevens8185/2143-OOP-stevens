@@ -1,2 +1,3 @@
 # 2143-OOP-stevens
-Assignments for OOP class
+# Jered Stevens
+### J.stevens8185@gmail.com
