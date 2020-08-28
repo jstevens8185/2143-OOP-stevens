@@ -49,18 +49,31 @@ struct Node
 ******************************************************/
 class List
 {
+
+/********************************************************
+ * Private Members:
+ *       Node pointer Head - points to front of list
+ *         Node pointer Tail - points to end of list
+ *         int Size - keeps track of size of list
+*********************************************************/ 
   private:
     Node *Head;
     Node *Tail;
     int Size;
 
   public:
+  //Constructor for class List
     List()
     {
         Head = Tail = NULL;
         Size = 0;
     }
 
+/********************************************************
+ * Function:    Push(int val)
+ * Params:      int val
+ * Description: Adds a node to the back of the list
+ *********************************************************/
     void Push(int val)
     {
         // allocate new memory and init node
@@ -77,7 +90,11 @@ class List
         }
         Size++;
     }
-
+/**************************************************************
+ * Function:    Insert(int val)
+ * Params:      int val
+ * Description: Adds a node to the front of the list
+*****************************************************************/
     void Insert(int val)
     {
         // allocate new memory and init node
@@ -93,7 +110,11 @@ class List
         }
         Size++;
     }
-
+/********************************************************************
+ * Function:    PrintTail()
+ * Params:      None
+ * Description: Prints the data in the last node of the list
+***********************************************************************/
     void PrintTail()
     {
         cout << Tail->x << endl;
@@ -113,13 +134,21 @@ class List
         return list;
     }
 
-    // not implemented 
+    // not implemented but would usually take the last
+    // element from the list and return the int that it contained
     int Pop()
     {
         Size--;
-        return 0; //
+        return 0; 
     }
 
+/***********************************************************
+ * Function:        Operator+(const List)
+ * Params:          referenced list
+ * Description:     adds this list and another referenced list
+ *                  to create 1 big list
+ * Returns:         List
+ ***********************************************************/
     List operator+(const List &Rhs)
     {
         // Create a new list that will contain both when done
