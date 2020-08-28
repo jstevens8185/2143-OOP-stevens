@@ -184,6 +184,7 @@ class List
     {
         Node *Temp = Head;
 
+// if the number given is more than the list contains then throw an error
         if (index >= Size)
         {
             cout << "Index out of bounds, exiting";
@@ -192,6 +193,8 @@ class List
         else
         {
 
+// If the number is less than the size of the list then return the data 
+// at the corresponding node
             for (int i = 0; i < index; i++)
             {
                 Temp = Temp->next;
@@ -200,6 +203,7 @@ class List
         }
     }
 
+// Make the list printable using the "cout<<" method
     friend ostream &operator<<(ostream &os, List L)
     {
         os << L.Print();
@@ -207,16 +211,20 @@ class List
     }
 };
 
+// Main driver of program. It all starts here.
 int main(int argc, char **argv)
 {
+    //Create 2 lists
     List L1;
     List L2;
 
+//push numbers 0-24 onto list 1
     for (int i = 0; i < 25; i++)
     {
         L1.Push(i);
     }
 
+//push numbers 50-99 onto list 2
     for (int i = 50; i < 100; i++)
     {
         L2.Push(i);
