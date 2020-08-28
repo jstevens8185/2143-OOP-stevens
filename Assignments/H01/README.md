@@ -13,7 +13,7 @@ This program implements a list data structure that links together nodes of integ
 
 ### Instructions
 
-- This program does not require any non standard libraries
+- This program does not require any non standard libraries 
 
 ### Example Command
 
