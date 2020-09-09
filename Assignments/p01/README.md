@@ -16,5 +16,7 @@ Array based stack from class lecture with added features including:
 |   1   | <a href="https://github.com/jstevens8185/2143-OOP-stevens/blob/master/Assignments/p01/main.cpp">main.cpp</a>        | Main driver of my project that creates a stack     |
 |   2   | <a href="https://github.com/jstevens8185/2143-OOP-stevens/blob/master/Assignments/p01/stack.h">stack.h</a>         | Header file that contains class Stack              |
 |   3   | <a href="https://github.com/jstevens8185/2143-OOP-stevens/blob/master/Assignments/p01/stack.cpp">stack.cpp</a>       | Implementation of function from stack.h |
-
+|   4   | <a href="https://github.com/jstevens8185/2143-OOP-stevens/blob/master/Assignments/p01/input.txt">input.txt</a>    | Input to test stack   |
+|   5   | <a href="https://github.com/jstevens8185/2143-OOP-stevens/blob/master/Assignments/p01/out.txt">out.txt</a> | Output from stack    |
+|   6   | <a href="https://github.com/jstevens8185/2143-OOP-stevens/blob/master/Assignments/p01/banner">banner</a>| For grading purposes|
 

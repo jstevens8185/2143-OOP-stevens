@@ -7,7 +7,7 @@ using namespace std;
 //using namespace psl;
 
 Stack::Stack() {
-    initCapacity = capacity = 10;          // set array size
+    Largest = initCapacity = capacity = 10;          // set array size
     S = new int[capacity];  // allocate new memory
     top = -1;               // initialize top of stack
     size = 0;               // set stack to empty
@@ -24,7 +24,7 @@ Stack::Stack() {
  *     Void
  */
 Stack::Stack(int cap) {
-    initCapacity = capacity = cap;         // set array size      
+    Largest = initCapacity = capacity = cap;         // set array size      
     S = new int[capacity];  // allocate new memory
     top = -1;               // initialize top of stack
     size = 0;               // set stack to empty
@@ -67,7 +67,7 @@ void Stack::Push(int data) {
 int Stack::Pop() {
     if (Stack::Empty())
     {
-        cout << "\n\nError: Stack empty!" << endl;
+        cout << "\nError: Stack empty!\n";
         return -1;
     }
     if (size <= (.5*capacity))
@@ -102,8 +102,9 @@ void Stack::Enlarge(){
     }
   
     int* temp = S;
-    capacity = newCapacity;
+    Largest = capacity = newCapacity;
     
+
     // if(Size > Largest){         //Keep track of how big array gets
     //   Largest = Size;
     // }
@@ -264,7 +265,12 @@ void Stack::Print(string outf){
     out.open(outf);
     //out << "in Print";
     for (int i = top; i >= 0; i--) {
-        out << S[i] << endl;
+        out << S[i] << endl << endl;
     }
+    
+    out << "Largest size of array was " << Largest << endl;
+    out << "Current size of array is " << capacity << endl;
+    out << "Top is " << top << endl;
+    out << "There are " << size << " elements in the stack" << endl;
 }
 
