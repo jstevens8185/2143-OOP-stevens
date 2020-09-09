@@ -3,6 +3,7 @@
 
 
 
+
 /**
  * Stack
  * 
@@ -40,6 +41,7 @@
             int size;     //current num items
             bool ReachedHalfFull;//Sets to true if stack reaches half of original capacity
             bool Enlarged;//Sets to true if stack is made bigger
+            int Largest;
         public:
             /**
              * Stack:
@@ -149,7 +151,7 @@
              * Returns:
              *     void
              */
-            void LoadFile();        // Reads input
+            void LoadFile(std::string input);        // Reads input
 
             void setHalfFullTrue();
 
@@ -163,6 +165,17 @@
              *     void
              */    
             void Print();
+
+            /**
+             * Print:
+             *    Prints to output file.
+             * Params:
+             *    ofstream& outf
+             * 
+             * Returns:
+             *     void
+             */ 
+            void Print(std::string outf);
 
             /**
              * Overloaded ostream <<

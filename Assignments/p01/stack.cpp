@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 #include "stack.h"
 
 using namespace std;
@@ -42,6 +43,7 @@ void Stack::Push(int data) {
     if (Stack::Full())
     {
         Stack::Enlarge();
+        cout << "made the stack bigger\n";
     }
     top++;              // move top of stack up
     size++;             // increment size
@@ -65,7 +67,7 @@ void Stack::Push(int data) {
 int Stack::Pop() {
     if (Stack::Empty())
     {
-        cout << "/n/nError: Stack empty!" << endl;
+        cout << "\n\nError: Stack empty!" << endl;
         return -1;
     }
     if (size <= (.5*capacity))
@@ -156,8 +158,11 @@ void Stack::Reduce(){
         return;
     }
     else if(!Enlarged){
-        //cout << "Stack has not been enlarged" << endl;
+        cout << "Stack has not been enlarged" << endl;
         return;
+    }
+    else if(capacity<=initCapacity){
+        cout<<"Stack cannot shrink anymore" << endl;
     }
     else
         Error();
@@ -215,26 +220,27 @@ void Stack::setHalfFullTrue(){
     return;
 }
 
-void Stack::LoadFile(){
+void Stack::LoadFile(std::string input){
     ifstream in;
-    in.open("input.txt");
+    in.open(input);
     ofstream out;
     out.open("out.txt");
 
     // Load the stack from infile
-  while(!in.eof()){
+    while(!in.eof()){
  
-    int data;
-    string useless;
-    in >> useless >> data;
-    if(data > 0){
-      Push(data);
-      //cout << "data is: " << data << endl;
+        int data;
+        string useless;
+        in >> useless >> data;
+        if(data > 0){
+            Push(data);
+            //cout << "data is: " << data << endl;
+        }
+        else{
+            Pop();
+        }
     }
-    else{
-    Pop();
-    }
-}
+    cout<<"data loaded" << endl;
   return;
 }
 
@@ -250,6 +256,15 @@ void Stack::LoadFile(){
 void Stack::Print() {
     for (int i = top; i >= 0; i--) {
         cout << S[i] << endl;
+    }
+}
+
+void Stack::Print(string outf){
+    ofstream out;
+    out.open(outf);
+    //out << "in Print";
+    for (int i = top; i >= 0; i--) {
+        out << S[i] << endl;
     }
 }
 
