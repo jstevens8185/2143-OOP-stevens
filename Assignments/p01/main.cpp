@@ -8,11 +8,19 @@
 // Semester:         Fall 2020
 //
 // Description:
-//       Example implementation of an array based stack that holds integers.
-//       Added methods: 
+//          Example implementation of an array based stack that holds integers.
+// Added methods: 
+//          void Enlarge();
+//          void Reduce();
+//          void Error();
+//          bool Empty();
+//          bool Full();
+//          void LoadFile(std::string input);
+//          void setHalfFullTrue();
+//          void Print(std::string outf);
 //
 // Usage:
-//       Nothing special right now.
+//          Nothing special right now.
 //
 // Files:            
 //       None
