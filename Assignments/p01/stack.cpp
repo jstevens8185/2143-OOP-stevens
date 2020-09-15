@@ -50,7 +50,7 @@ void Stack::Push(int data) {
     size++;             // increment size
     S[top] = data;      // add item to array
     //cout << "pushed " << data << endl;
-    if (size == (.5*capacity))
+    if (size == (.5*initCapacity))
     {
         Stack::setHalfFullTrue();
     }
@@ -216,10 +216,10 @@ bool Stack::Full() {
 
 void Stack::setHalfFullTrue(){
     ReachedHalfFull = true;
-    if (ReachedHalfFull)
-    {
-        cout << "halfFull is now true\n";
-    }
+    // if (ReachedHalfFull)
+    // {
+    //     cout << "halfFull is now true\n";
+    // }
     
     
     return;
@@ -228,8 +228,7 @@ void Stack::setHalfFullTrue(){
 void Stack::LoadFile(std::string input){
     ifstream in;
     in.open(input);
-    ofstream out;
-    out.open("out.txt");
+   cout << "in loadFile\n";
 
     // Load the stack from infile
     while(!in.eof()){
@@ -237,7 +236,8 @@ void Stack::LoadFile(std::string input){
         int data;
         string command;
         in >> command;
-        if(data > 0){
+        if(command == "push"){
+            in >> data;
             Push(data);
             //cout << "data is: " << data << endl;
         }
@@ -271,6 +271,9 @@ void Stack::Print(string outf){
     // for (int i = top; i >= 0; i--) {
     //     out << S[i] << endl << endl;
     // }
+    out << "Name:       Jered Stevens\n"
+         << "Program:    P01\n"
+        << "Date:       09/15/2020\n\n";
     
     out << "Starting size of the array was: " << initCapacity << endl;
     out << "Largest size of array was " << Largest << endl;
