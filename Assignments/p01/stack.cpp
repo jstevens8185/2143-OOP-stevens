@@ -42,13 +42,14 @@ Stack::Stack(int cap) {
 void Stack::Push(int data) {
     if (Stack::Full())
     {
+        cout << "+ : " << capacity << " -> ";
         Stack::Enlarge();
-        cout << "made the stack bigger\n";
+        cout << capacity << endl;
     }
     top++;              // move top of stack up
     size++;             // increment size
     S[top] = data;      // add item to array
-    cout << "pushed " << data << endl;
+    //cout << "pushed " << data << endl;
     if (size == (.5*capacity))
     {
         Stack::setHalfFullTrue();
@@ -70,12 +71,15 @@ int Stack::Pop() {
         cout << "\nError: Stack empty!\n";
         return -1;
     }
+    int data;
     if (size <= (.5*capacity))
     {
+        data = S[top];  // pull item from stack
+        cout << "- : " << capacity << " -> ";
         Stack::Reduce();
+        cout << capacity << endl;
     }
     
-    int data = S[top];  // pull item from stack
     top--;              // shrink the stack
     size--;             // update our size
     return data;        // send item back
@@ -231,8 +235,8 @@ void Stack::LoadFile(std::string input){
     while(!in.eof()){
  
         int data;
-        string useless;
-        in >> useless >> data;
+        string command;
+        in >> command;
         if(data > 0){
             Push(data);
             //cout << "data is: " << data << endl;
@@ -264,13 +268,13 @@ void Stack::Print(string outf){
     ofstream out;
     out.open(outf);
     //out << "in Print";
-    for (int i = top; i >= 0; i--) {
-        out << S[i] << endl << endl;
-    }
+    // for (int i = top; i >= 0; i--) {
+    //     out << S[i] << endl << endl;
+    // }
     
+    out << "Starting size of the array was: " << initCapacity << endl;
     out << "Largest size of array was " << Largest << endl;
-    out << "Current size of array is " << capacity << endl;
-    out << "Top is " << top << endl;
-    out << "There are " << size << " elements in the stack" << endl;
+    out << "Ending size of array is " << capacity << endl;
+
 }
 

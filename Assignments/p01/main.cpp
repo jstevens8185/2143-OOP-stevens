@@ -109,6 +109,10 @@ int main() {
     Stack S1;           // calls default constructor
     Stack S2(25);       // calls overloaded constructor
 
+    out << "Name:       Jered Stevens\n"
+        << "Program:    P01\n"
+        << "Date:       09/15/2020\n\n";
+
     S1.LoadFile("input.txt");
     S1.Print("out.txt");
 
