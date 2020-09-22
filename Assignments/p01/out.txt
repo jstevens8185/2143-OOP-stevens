@@ -1,24 +1,7 @@
-2
+Name:       Jered Stevens
+Program:    P01
+Date:       09/15/2020
 
-48
-
-4
-
-95
-
-5
-
-15
-
-8
-
-6
-
-5
-
-10
-
-Largest size of array was 40
-Current size of array is 20
-Top is 9
-There are 10 elements in the stack
+Starting size of the array was: 10
+Largest size of array was 80
+Ending size of array is 80
