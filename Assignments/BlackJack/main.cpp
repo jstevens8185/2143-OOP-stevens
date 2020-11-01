@@ -57,6 +57,56 @@ class Card{
   private:
     Card* next;
     Card* prev;
+    int value;
+
+    /**
+ * Set Suit.
+ * -suit is based on the cards value (0-51)
+ * -if value is 0-12 its spades
+ * -if "" is 13-25 its clubs
+ * ""        26-38 its diamonds
+ * else its hearts
+**/ 
+    void setSuit(){
+      if(value>=0 && value<13){
+        suit = "Spades";
+      }
+      else if(value >= 13 && value < 26){
+        suit = "Clubs";
+      }
+      else if(value >= 26 && value < 39){
+        suit = "Diamonds";
+      }
+      else{
+        suit = "Hearts";
+      }
+    }
+
+/**
+ * setStringValue
+ * sets string value based on int value
+**/ 
+    void setStringValue(){
+      if (value > 1 && value < 11){
+        stringValue = to_string(value);
+      }
+      else if(value == 1){
+        stringValue = "Ace";
+      }
+      else if(value == 11){
+        stringValue = "Jack";
+      }
+      else if(value == 12){
+        stringValue = "Queen";
+      }
+      else if(value == 13){
+        stringValue = "King";
+      }
+      else{
+        stringValue = "-1";
+      }
+    }
+
   protected:
   /////////////////////////
   //0-12: spades
@@ -66,20 +116,35 @@ class Card{
   /////////////////////////
     
     string suit;
-    int value;
+    string stringValue;
   public:
 //Constructors
-    Card(){
+    Card()
+    {
       if(TOTALCARDSCREATED >= 10000){
           cout << "error occured. restart game.";
           return;
       }
       suit = " ";
+      stringValue = " ";
       value = -1;
       //cout << "made a card\n";
       TOTALCARDSCREATED++;
     }
-    Card(int val){
+/**
+ * Make a new card. Pass in a number that represents value (ace 2 3...jack..)
+ * -set the value equal to passed in val
+ * -set suit based on value. (0-12 is spades. 13-whatever is...)
+ * -mod value to get them in sets of 13
+ * -set stringValue based on value set in last step
+**/
+
+    Card(int val)
+    {
+/**
+ * Stop cards from being made after an absurdly high value in case it 
+ * gets into a card making loop
+**/
       if(TOTALCARDSCREATED >= 10000){
           cout << "card limit reached. restart game.";
       }
@@ -87,10 +152,13 @@ class Card{
         value = val;
         setSuit();
         value = value % 13 + 1;
+        setStringValue();
         TOTALCARDSCREATED++;
       }
     }
-    Card(int suit, int value){
+    
+    Card(int suit, int value)
+    {
       if(TOTALCARDSCREATED >= 10000){
           cout << "error occured. restart game.";
           return;
@@ -98,23 +166,17 @@ class Card{
       TOTALCARDSCREATED++;
 
     }
-    void setSuit(){
-      if(value>=0 && value<13){
-        suit = "spades";
-      }
-      else if(value >= 13 && value < 26){
-        suit = "clubs";
-      }
-      else if(value >= 26 && value < 39){
-        suit = "diamonds";
-      }
-      else{
-        suit = "hearts";
-      }
+    
+
+    string getSuit(){
+      return suit;
     }
 
+    string getRank(){
+      return stringValue;
+    }
+  
     friend class Deck;
-
 };
 
 class CardContainer{
@@ -139,7 +201,7 @@ class Hand : public CardContainer{
       }
 };
 
-//Linked list of cards to make up deck
+//doubly linked list of cards to make up deck
 class Deck : public CardContainer{
   private: 
     Card* current;
@@ -154,7 +216,8 @@ class Deck : public CardContainer{
 //
 //Adds 52 unique nodes (cards) to the 
 //deck in a linked list fashion
-    Deck(){
+    Deck()
+    {
       for(int i=0; i<52; i++){
         if(!deckBottom){
           deckBottom = new Card(i);
@@ -187,25 +250,39 @@ class Deck : public CardContainer{
       }
     }
 
-    void printDeck(){
+    void printDeck()
+    {
       Card* temp = deckBottom;
 
       while(temp){
-        cout << temp->suit << endl;
-        cout << temp->value << endl << endl;
+        cout << temp->getSuit() << endl;
+        cout << temp->getRank() << endl << endl;
         temp = temp->next;
         
       }
     }
-/*
+
     Deck shuffle(){
-  //split list in half, create new deck and alternate inserting cards into new deck, randomly place 2 or 3 cards at a time to simulate a real shuffle. repeat 4-7 times to ensure its random
+  //split list in half, randomly place 2 or 3 cards at a time to simulate a real shuffle. repeat 4-7 times to ensure its random
+       Card* tempTop = NULL;
+       Card* tempMiddle = NULL;
+       Card* tempBottom = NULL;
+       Card* LeftCurrent = NULL;
+       Card* RightCurrent = NULL;
+
+
+  //Split the list by unlinking "middle" and the card before it
+      deckMiddle->next->prev = NULL;
+      deckMiddle->next = NULL;
+  //Deck now is in two parts. Like when you cut it in half
+
+    
     }
 
     Deck resetDeck(){
       
     }
-*/
+
 };
 
 class BlackJack{
