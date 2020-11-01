@@ -267,15 +267,22 @@ class Deck : public CardContainer{
        Card* tempTop = NULL;
        Card* tempMiddle = NULL;
        Card* tempBottom = NULL;
-       Card* LeftCurrent = NULL;
-       Card* RightCurrent = NULL;
+       Card* Current = NULL;
+       
 
 
   //Split the list by unlinking "middle" and the card before it
       deckMiddle->next->prev = NULL;
       deckMiddle->next = NULL;
   //Deck now is in two parts. Like when you cut it in half
-
+    tempBottom = deckMiddle = Current;
+    deckMiddle = deckMiddle->prev;
+    tempBottom->prev = NULL;
+    Current->next = deckTop;
+    deckTop = deckTop->prev;
+    Current->next->prev = Current;
+    Current = Current->next;
+    
     
     }
 
